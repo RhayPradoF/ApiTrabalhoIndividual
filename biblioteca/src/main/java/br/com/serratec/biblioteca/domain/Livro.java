@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -30,6 +31,7 @@ public class Livro {
 	@NotBlank(message="Preencha a quantidade de Páginas!")
 	private String qtdPaginas;
 	
+	@Valid
 	@Embedded
 	private Publicacao publicacao;
 	
