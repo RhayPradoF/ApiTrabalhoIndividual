@@ -46,12 +46,20 @@ public class LivroController {
 	 }
 
 	
-	@PostMapping
+	@PostMapping // insere um só 
 	@ResponseStatus(HttpStatus.CREATED)
 	public Livro inserir_novo_livro(@Valid @RequestBody Livro livro) {
 		livro = livroRepository.save(livro);
 		return livro;
 	}
+	
+	@PostMapping("/livros_varios") // insere mais de um 
+	@ResponseStatus(HttpStatus.CREATED)
+	public List<Livro> inserir_novos_livro(@Valid @RequestBody List<Livro> livros) {
+		livros = livroRepository.saveAll(livros);
+		return livros;
+	}
+	
 
 	@PutMapping("/{id}")
 	public ResponseEntity<Livro> alterar_livro(@PathVariable Long id, @Valid @RequestBody Livro livro) {
